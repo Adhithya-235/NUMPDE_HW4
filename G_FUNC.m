@@ -1,0 +1,17 @@
+function[Gd,Cd,Ad,Bd] = G_FUNC(P,Pd,gam,rhod)
+
+Cd = sqrt(gam*Pd/rhod);
+Ad = 2/((gam + 1)*rhod);
+Bd = Pd*((gam - 1)/(gam + 1));
+
+if P>Pd %SHOCK
+    
+    Gd = (P - Pd)*((Ad/(P + Bd))^(1/2));
+    
+else %RAREFACTION
+     
+    Gd = ((2*Cd)/(gam - 1))*(((P/Pd)^((gam - 1)/(2*gam)))-1);
+    
+end
+
+end

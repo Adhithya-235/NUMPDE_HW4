@@ -1,0 +1,15 @@
+function[PSTAR,USTAR] = STARVAL(PL,PR,UL,UR,RHOL,RHOR,gam)
+
+P0 = 0.5*(PL + PR);
+TOL = 1e-6;
+ERR = 1;
+POLD = P0;
+
+while ERR > TOL
+    
+    P = POLD - (G_COMP(POLD,PL,PR,UL,UR,RHOL,RHOR,gam)/DG_COMP(POLD,PL,PR,RHOL,RHOR,gam));
+    ERR = abs(P - POLD)
+    POLD = P;
+
+
+end
